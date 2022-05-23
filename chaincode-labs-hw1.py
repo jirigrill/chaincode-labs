@@ -52,7 +52,6 @@ class WasBlockReceived(BitcoinTestFramework):
 
         blocks = [int(self.generate(self.nodes[0], sync_fun=lambda: self.sync_all(self.nodes[0:2]), nblocks=1)[0], 16)]
 
-
         self.log.info("Mine block with node 1")
         self.tip = int(self.nodes[1].getbestblockhash(), 16)
         self.block_time = self.nodes[1].getblock(self.nodes[1].getbestblockhash())['time'] + 1
@@ -71,7 +70,6 @@ class WasBlockReceived(BitcoinTestFramework):
 
         self.log.info("Check if node 2 received it")
         assert_equal(self.nodes[1].getbestblockhash(), self.nodes[2].getbestblockhash())
-
 
 if __name__ == '__main__':
     WasBlockReceived().main()
